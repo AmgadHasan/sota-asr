@@ -1,0 +1,345 @@
+DYLAN FIELD
+
+Hi everybody. Welcome. Thank you so much for being here.
+I am so glad that we're able to host this at Figma. My name is Dylan Field. I'm the CEO and cofounder of Figma. And a big welcome to everybody here, but also everyone who's joining us via live stream as well. And I'm really excited for tonight. I think this is going to be a pretty incredible conversation and I'm proud to be able to introduce the two folks who'll be having it.
+So first, Elad Gil. Elad is not only a dear friend and mentor of mine, but also to many in Silicon Valley and the startup community globally, and also Arthur Mensch. Arthur is a former academic who has turned CEO and cofounder of Mistral. And Mistral, for the one or two people in the room that do not know, is breaking incredible ground in open source models and I would dare say changing quite a lot about the future of AI.
+And with that, I'll pass it off for their Fireside Chat. Welcome.
+
+ELAD GIL
+
+Oh, thanks. Thanks so much to Figma for hosting us, and thanks everybody for making it today. And of course to Arthur. Arthur made a heroic effort to join us where he literally had to jump out into traffic, grab a bike and bike over here. So thank you so much for coming.
+
+ARTHUR MENSCH
+
+Discovering the US, I guess.
+
+ELAD GIL
+
+So from a background perspective, you got your PhD in machine learning, you were a staff research scientist at DeepMind, and then you started Mistral, and you started it, I believe, with both some folks from Google, such as yourself, and then some folks from Meta and the llama project there. You folks have taken an open core approach, which I think is super interesting and we can talk about in a little bit. But I was just curious like, just to start off, what was the impetus for starting Mistral, how did you decide to do it? What were the motivations and, you know, the initial formation of the company?
+
+ARTHUR MENSCH
+
+So ... Yeah, so I think this has always been on the mind of me, Guillaume and Timothee. So I was at DeepMind, they were at Meta, and I guess we were waiting for the hour, and the hour came with ChatGPT to some extent, so that we realized we had an opportunity to create a company pretty quickly with a good team that we could hire from day one and go and try to do speedrun a bit because we weren't starting the first. So that's what we ... that's how we got started.
+
+ELAD GIL
+
+And for I guess the people who are probably watching the live stream, I think the people in the audience are probably well versed with what Mistral does. Can you explain a little bit about the set of products you have, the platform, you know, all the various components now.
+
+ARTHUR MENSCH
+
+Yeah, for sure. So, we ... Mistral is actually a company building foundational models. We are the leading in open source models. So we have started the company by creating text-to-text generation models, which are really the foundational block for creating today's generative AI applications. I know we're at Figma, so we're not focusing on images yet, but this is obviously coming at some point. And so, yeah, we ... the differentiation we have is that we took this open core approach to release Mistral-7B, Mixtral-8x7B in December and build a platform on top of these open source models with the addition of commercial models that we introduced in December and then in February. So we're building an open source ... open source models and we're building a portable platform for enterprises with ... focusing on the developers and building tools for developers.
+
+ELAD GIL
+
+How long did it take from when you founded the company to when you launched 7B?
+
+ARTHUR MENSCH
+
+It took four months, approximately.
+
+ELAD GIL
+
+Yeah. That's amazing. So I think one of the things that's really noticeable is the immense speed in terms of how rapidly Mistral actually launched its very first product and then the rapid adoption of that right as 7B came out, suddenly, I think, people realized that you could have these small performant models that, you know, were very fast. Inference time and time to first token were very cheap, which made a big difference if you were doing things at high throughput. How did you build something so rapidly? Or how did you focus a team on such a singular goal so quickly?
+
+ARTHUR MENSCH
+
+Well, I guess we thought about what was missing in the field and we realized that small models were actually quite compelling for people. We saw a community building on top of llama at the time, on top of llama 7B. But llama 7B wasn't good enough. And so we realized that we could make it much better. We could make a 7B model much better. And so that's the sweet spot we targeted for our introduction to the world. And basically we had to build the entire stack from scratch. So getting the data, building the training code, getting the compute, which was a bit of a challenge because in these four months we were ramping up. So we started at zero GPUs and we actually trained on like 500 GPUs, Mistral-7B, and ... so I guess we went fast because the team was very motivated, and so not a lot of holidays during these four months. And generally speaking, AI teams that succeed and go are typically like four to five people. And AI teams that invent things have always been this size. So we are trying to have an organization where we have squads of five people working on data, working on pretraining, and so far this has worked out quite well.
+
+ELAD GIL
+
+Is there anything you can share in terms of what's coming next in your roadmap?
+
+ARTHUR MENSCH
+
+Yeah, so we have new open source models, both generalist and focused on specific verticals. So this is coming soon. We are introducing some new fine tuning features to the platform and we have introduced a chat-based assistant called Le Chat that we're ... that is currently just using the model. So it's pretty raw. It's a bit like chatGPT v-0, and we're actively building on building data connectors and ways to enrich it to make it a compelling solution for enterprises.
+
+ELAD GIL
+
+What kind of verticals do you plan to focus on, or can you share that yet?
+
+ARTHUR MENSCH
+
+Well, I guess we started with financial services because that's where most of the maturity was. We also ... Well, I guess we, basically we have two go-to-markets.
+
+So enterprises starting with financial services because they are mature enough, and the digital native. So talking to developers like building AI companies or introducing AI to formerly non-AI companies, and so that's the two, I guess, go-to-market pools that we're talking to. The first one through some partnerships with cloud because, as it turns out, they're a bit controlling the market in that respect. And then through our platform, we're talking directly to developers.
+
+ELAD GIL
+
+I guess on the cloud side, one of the relationships you recently announced was with Microsoft and Azure. Is there anything you can say there about that relationship or that access that it's providing you to the enterprise?
+
+ARTHUR MENSCH
+
+Yes, this opened up new customers. A lot of enterprises can't really use third party SaaS providers easily because you need to go through procurement, risk assessment, et cetera. But if you go as a third party provider through the cloud, you actually get an accelerator. And so, when we released Mistral Large on Azure, we got like 1000 customers pretty right away. So that's the ... The truth is you need to adapt to the fact that enterprises are using cloud and they don't want to introduce new platforms easily. And so you need to go through that, at least at the beginning.
+
+ELAD GIL
+
+And then, one of the things that a lot of the industries focus on right now is scaling up models and, you know, ever larger, ever more performant versions. How do you think about the scale that you all are shooting for in the next six months or year? Or is the plan to have very large models over time? Or how do you think about the mix of things that you want to offer?
+
+ARTHUR MENSCH
+
+Yeah, so we first focused on efficiency to be able to train models more efficiently than what was currently done. And then once we had achieved this efficiency, we started to scale so that's why we did another fundraising, and that's why we started to increase the amount of compute we had. And so we can expect new models that will be more powerful because we are pouring more compute in it, models that might be a bit larger, because when you grow the compute, you need to increase the capacity of models. But something that remains very important for us is to be super efficient at inference and to have models that are very compressed. And so that's the kind of model that will continue shipping, especially to the open source world.
+
+ELAD GIL
+
+One of the things that was pointed out to me that I'd love to get your views on is that as you reach certain capabilities within a model, you can start to accelerate the pace at which you can build the next model, because you can use, say, a GPT-4 level model to do RLAIF, or to generate synthetic data, or to do other things that really accelerate what you're doing. Data labeling, all sorts of things, in some cases superhuman performance. How do you think about using models to bootstrap each other up? And does that actually accelerate the timeline for each subsequent release?
+
+ARTHUR MENSCH
+
+Yeah, I guess. Generally speaking, two years ago, RLHF was very important. Today it's actually less important because the models have become better, and they're actually sometimes good enough to self supervise themselves. And what we have noticed is that we scale as we scale. This is definitely improving. So that means that the costly part of going through human annotations is actually reducing. And so this is also lowering the barrier of entrance.
+
+ELAD GIL
+
+I guess another sort of adjacent area is reasoning. And a lot of people feel that as you scale up models, they'll naturally acquire reasoning. And then there's other approaches and entire companies that have recently been founded around just focusing on the reasoning aspect of some of these models. How do you think about that? Are you going to be training sub models for reasoning, or do you think it's just going to come out of scaling the existing models? Is it a mix of the two?
+
+ARTHUR MENSCH
+
+Well, I guess reasoning comes from ... At this point, the only validated way of improving reasoning is to train models on larger data and make them bigger. There's obviously some possibilities that you have by building an auto loop, adding new function-calling, adding data as well for the model to reason about grounded aspects instead of trying to imagine stuff. So I guess we don't pretend to have like a secret recipe for reasoning, but we've made models that are pretty good at reasoning by focusing on the data. We're pretty good at using mathematics in our data. And so that's a good way of improving reasoning. There's many ways in which to improve it. Code has helped as well, and so that's ... there's no magic recipe, but just focusing on the little things makes it work.
+
+ELAD GIL
+
+Yeah, I guess one of the reasons I ask is, I feel like if you look at sort of the world of AI, there's a few different approaches that have been done in the past. One is sort of the transformer based models and scaling them. The other is a little bit more in the lines of like, AlphaGO and poker and some of the gaming related approaches where you're doing self play as a way to bootstrap new strategies or new capabilities. And those are in some sense forms of reasoning. And I know that there are certain areas where that may be very natural to do in the context of model training. Code would be an example. There's a few others where you can sort of test things against real rubric. And so, you know, I don't know if you folks are considering things like that, or if that's important or not in your mind.
+
+ARTHUR MENSCH
+
+So Guillaume and Timothee were doing theory improving with LLMs back in the day at Meta. So that's very linked to, well, using LLM as the reasoning brick and then building an auto loop that involves sampling, that involve Monte Carlo tree search, all these kind of things. I think the one thing that was standing in the way for this is the fact that models have very high latency, and if you want to sample heavily, you need to make them smaller. And so it's very much tied to efficiency. So as we grow efficiency, as hardware increases in capacity as well, you become more able to explore more and to sample more. And that's a good way effectively to increase reasoning through the autoloop development.
+
+ELAD GIL
+
+And then I guess the other thing a lot more people are talking about or thinking about is memory and some ability to maintain a longer view of state in different ways across actions or chaining things for agents. Do you expect to go down any sort of agentic routes anytime soon? Or is the focus much more on sort of core APIs that are enabling in all sorts of ways?
+
+ARTHUR MENSCH
+
+So that's what we started to enable with function calling, which is a good way to handle, to start creating agent that store states. So memory, when we talk about memory, like of conversation, the way you make it happen is that you basically introduce some crude functions on your middleware part that you give to the model, and so it can actually use that to update its memory and its representation. And so function calling is the one multipurpose tool that you can use to create complex settings, complex agent. It's hard to make it work, it's hard to evaluate as well. So I think this is going to be one of the biggest challenge. How do you make agent that work, evaluate them and make them work better for feedback? And this is one of the challenge that we'd like to tackle on the product side.
+
+ELAD GIL
+
+And then I guess the one other thing that a lot of people have been talking about recently is just context window. And for example, I know that there's some recent results around, for example, biology models, where if you increase the context window, you can end up with better protein folding and things like that. So the context and the context length really matters. I think Gemini launched a million, up to a few millions sort of context window, and then magic, I think, has had 5 million for a while. How important do you think that is? Do you think that displaces other things like rag or fine tuning? Are all these things going to work coincident with each other?
+
+ARTHUR MENSCH
+
+So it doesn't displace fine tuning because fine tuning has a very different purpose of pouring your preferences and basically demonstrating the task. On the other hand, it simplifies rag approaches because you can pour more knowledge into the context. And so what we hear from users is that it's like a drug. So once you start to use models with a large context, you don't want to go back. And so that's effectively something we want to try to improve and extend. There's a few techniques for making it happen. On the infrastructure side, it's actually quite a challenge because you need to handle very large attention matrices, but there are ways around it.
+
+ELAD GIL
+
+I see what you're saying. So basically, like on the RAM, on the GPU, basically you ran out of space for something as you're building a bigger and bigger context window. Or is it something else?
+
+ARTHUR MENSCH
+
+Yeah, there's a variety of techniques you need to rethink for sharding and communication to handle the big matrices. And then you do pay a cost because ... because you're ... yeah, the model ... it basically becomes slower because of the quadratic cost.
+
+ELAD GIL
+
+When do you think we hit a moment where these models are better than humans at most white collar tasks? Do you think that's two years away, five years away, ten years away?
+
+ARTHUR MENSCH
+
+I guess it depends on the task. There's already a few tasks on which the model are actually better. And so I expect this to unfold pretty quickly, actually. So hard to say a date, but I would say in three years this is going to look very different, especially if we find a way to deploy agent and to evaluate them and make them robust and reliable.
+
+ELAD GIL
+
+What about displacing the CEO of Figma? No, I'm just kidding. Just kidding. Dylan, please keep us going. How do you think about ... So I guess there's a lot of different foundation models that people are starting to work on, right? There's obviously a lot of attention on the LLMs, and there have been diffusion models for image gen, although it seems like people are moving more and more towards image or transformer based approaches for image and video and other things. Are there big holes in terms of where you think there are gaps where people aren't building foundation models, but they should be?
+
+ARTHUR MENSCH
+
+I would say we've seen some things happening on the robotic side, but it's ... I think it's still at the very early stage. On the audio, this is covered. On video, this is starting to be covered. Essentially, like models that can take actions and become very good at taking actions, I don't think this is very well covered. There's some progress to be made there, but, yeah, overall, I expect all of this to converge towards similar architectures and at the end of the day, like a joint training as we move forward in time.
+
+ELAD GIL
+
+So do you think eventually everything is a transformer based model?
+
+ARTHUR MENSCH
+
+Well, transformer are a very good way of representing associations between tokens or between information, so it really does not really matter, but it seems to be enough, it seems to be a sufficient representation to capture most of the thing we want to capture, so ... and we know how to train them well so we can transfer information between what we learn from text on images, et cetera. And so that's why I think this is going to be quite hard to displace.
+
+ELAD GIL
+
+Do you think that'll also apply to the hard sciences? If you're trying to do, like, physics simulation, material sciences, pure math.
+
+ARTHUR MENSCH
+
+It's not ging to be ... I don't expect like ... just next token prediction to solve that. And so you do need to move to the outer loop, and you need to figure out also a way to make models interact with simulators, potentially, because at some point, you need the model to learn the physics, and so you need to bootstrap that with the simulator. But I'm not an expert, to be honest.
+
+ELAD GIL
+
+And then all these models, of course, need a lot of GPU, and people have very publicly talked about how there's a GPU crunch right now, and there's shortages of different sorts. When do you think that goes away, or do you think that goes away?
+
+ARTHUR MENSCH
+
+So I think that probably eases as the H100 comes, and as the ... we'll start to see some competition on the hardware space, which is going to improve cost, I think. I expect that also as we move to foundational models that are multimodal, et cetera, we can actually train on more flops. And so I don't think we haven't hit the wall there in scaling. And so I expect this is probably going to continue on the training part and on the inference part as we move on to production and we have models running agent on the background. So really removing this bottleneck that we started ... that we had at the beginning, which was the speed at which we could read information, I expect that inference capacity will spread pretty significantly.
+
+ELAD GIL
+
+Do you think that will be done through traditional GPU based approaches, or do you think we'll start having more and more custom asics, either for specific transformer models where you burn the weights on the silicon, or more generally for transformers in general, where you can just load a set of weights or something.
+
+ARTHUR MENSCH
+
+So the good thing about the fact that everybody is using transformer is that you can specialize hardware to this architecture and you can make a lot of gains there. There's a few unfortunate bottleneck on Nvidia chips, for instance, the memory bandwidth is a problem. And so by moving on to more custom chips, you can remove ... you can reduce significantly the cost of inference. It's not really ready yet, so we're not betting on it right now, but I really expect that this is going to improve cost pretty significantly.
+
+ELAD GIL
+
+So Mistral really started off as a developer centric product, right? You launched to something that was very open source. Now you're starting to serve a variety of enterprises. Is there any commonality in terms of the types of use cases that people are coming with or the areas that enterprises are most quickly adopting these sorts of technologies or approaches?
+
+ARTHUR MENSCH
+
+Yeah. So enterprises adopts the technology for mostly three use cases. So the first one is developer productivity. And usually they kind of struggle with the off-the-shelf approach because it's not fed to their way of making, of developing. They also use knowledge management tools, and usually they've built their own assistant connected to their database. And the last thing is customer service. So the most mature company have made a large progress toward reducing their human engagement with customers and just making it much more efficient. And so these are really the free use cases we see with enterprises. And with AI companies, it's much more diverse because they are a bit more creative. But yeah, overall, enterprises have these free use cases. It's also the reason why we are starting to think of moving a bit on the value chain and offer things that are a bit more turnkey, because sometimes they need a little bit of help.
+
+ELAD GIL
+
+Yeah, that makes sense. I'm guessing many people here saw the tweet from the CEO of Klarna where he's talking about customer success and how they, you know, added a series of tools based on top of OpenAI that basically reduced the number of people they need by 700 in terms of customer support. They launched it in a month and they had 2.3 million responses in that single month. So, it seems like there's this really big wave coming that I think is almost under discussed in terms of impact of productivity, impact of jobs and things like that.
+
+ARTHUR MENSCH
+
+Yeah, so we saw like even more diverse use cases. One of them was having a platform that engaged with temporary workers to try and find a job for them. So through texting, and so the customer in question went from 150 people activating this well, engaging directly with customers to seven, and they were actually able to scale the platform much more and to enable temporary workers to work more easily. And generally speaking, this approach of automating more of the customer service is a way to improve the customer service. And so that's, I think, what is exciting about this technology.
+
+ELAD GIL
+
+What do you think is missing right now, or what is preventing enterprise adoption from accelerating further?
+
+ARTHUR MENSCH
+
+So our bet is that ... like ... they still struggle a bit to evaluate and to figure out how to verify that the model can actually be put in production. What's missing are a bunch of tools to do continuous integration, also tools to automatically improve whatever use case the LLM is used for. And so I think this is what is missing for developer adoption within enterprises. Now for user adoption within enterprises, I think we're still pretty far away from being ... from creating assistant that follows instruction well, that becomes ... that can be customized easily by users. And so yeah, on the user side, I think this is what is missing.
+
+ELAD GIL
+
+One thing that I think you've been very thoughtful about is how to approach AI regulation. And I know that you've been involved with some of the conversations in terms of EU regulation and other regulation of AI. Could you explain your viewpoint in terms of what's important to focus on today versus in the future and how to think about it more generally?
+
+ARTHUR MENSCH
+
+Yeah, so we had to speak up because at the time, in October, there was a big movement against open source AI. And so we had to explain that this was actually the right way to today, make the technology secure and well evaluated. And overall we've been continuously saying that we're merging very different conversations about existential risk, which is ill-defined and that has little scientific evidence for, where this is merged with a discussion about, I guess, national security and AI and LLMs being used to generate bioweapons. But this is ... again, this is something that is lacking evidence. And then there's a bunch of very important problems that we should be focusing on, which is how do you actually deploy models and control what they are saying? How do you handle biases? How do you set the editorial tone of a model in a way that you can evaluate and control? And I think this is the most important part. How do you build safe products that you can control well and that you can evaluate well? And this is the one thing we should be focusing on. That's what we've been saying for a couple of months because we were a bit forced to speak up.
+
+ELAD GIL
+
+Yeah, it seems like one of the areas that people are kind of worried about in the short term on AI is things like deepfakes or people spoofing voices or other things like that, either for financial attacks, for political purposes, et cetera. Do you all have plans to go down the voice and sort of multimodality side?
+
+ARTHUR MENSCH
+
+So generating things that are not text is effectively a bit more of a trap on the safety side, and that we have avoided, we've avoided it effectively. Imitating voices and deepfakes are very concerning. And this is not something that we pretend to be able to sort. Text, it's much easier because there's no ... it's ... it's never ... there's never this kind of problem. So you can generate ... text is ... generating text is never an enabler of very harmful behavior. Misinformation has been mentioned, but usually misinformation is bottlenecked by diffusion and not by creation. So by focusing on text, we kind of circumvent these issues, which are very real.
+
+ELAD GIL
+
+I think one of the things that's very striking about Mistral is, and I should say in Europe in general right now, is there's a very robust startup scene. And if I look at the two biggest pockets of AI right now in terms of startup formation, it's basically here in Silicon Valley, and then it's like the Paris-London corridor, and you have eleven labs and you have Mistral and you have all these great companies forming. What do you think is driving that?
+
+ARTHUR MENSCH
+
+I think there's a couple of historical reasons. In London, there was, and there still is DeepMind, which was a very strong attractor of talents across the world. And in Paris in 2018, both DeepMind and Google opened offices, research offices, and it went and augmented the existing research scene that was already pretty strong, because as it turns out, France and also a couple of other countries in the European Union have very good education pipeline. And so junior machine learning engineers and junior machine learning scientists are quite good. And so that's one of the reason why today we have a pretty strong ecosystem of companies on both the foundational layer, but also on the application layer.
+
+ELAD GIL
+
+Yeah, the French seem a lot smarter than the British. So. No, I'm just kidding.
+
+ARTHUR MENSCH
+
+I'm not the one saying that.
+
+ELAD GIL
+
+The other thing that I think is kind of striking is you start to see a lot of different AI-based companies focused on regional differences. So, for example, when you launched, you included a variety of different european languages. I know there's models being built right now for Japan, for India, for a variety of different geos. And one could argue that either you have large global platform companies that serve everywhere, except for maybe China, because China is likely to be firewalled in some ways, just like it has been for the Internet more generally. Or you could imagine a world where you have regional champions emerge. And in particular, you could almost view it like Boeing versus Airbus, where the governments of specific regions decide that they really want to fund or become customers to local players. What do you view as sort of the future world, and how does that evolve in terms of global versus regional platforms?
+
+ARTHUR MENSCH
+
+So we've taken a global approach to distribution. I guess there was another path that we could have taken, which was to focus on just the European market, pretending that there was any form of defensibility there. We don't think this is the case. Technology remains very fluid and so can circulate across countries. On the other hand, the technology we're building is effectively very linked to language, and language is, well, English is only one language across many. And as it turns out, LLMs are much better at English than other languages. So by also focusing more on different languages, we managed to make models that are very good at European languages in particular, versus the American models. And so there's a big market for that. And similarly, there's a big market in Asia for models that can speak asian languages. And there's a variety of scientific problems to be sorted and solved to address these markets, but those are huge, and those haven't been the focus of US companies. So it's effectively an opportunity for us as a European company to focus a bit more on the world globally.
+
+ELAD GIL
+
+Okay, great. I think we can open up to a few questions from the audience, and if people want to just ask, I can always just repeat it.
+In the back there, please. Yeah, right there. If you want to speak loudly, I can repeat what you say. The question is, do you plan to release closed-source versions of your model or always be open source?
+
+ARTHUR MENSCH
+
+So we have commercial models already. So to an extent we haven't been open sourcing everything. We are trying to ... I mean we are a very young company, but our purpose is to release the best open source models. And then we are basically coming up with an enterprise surrounding and some premium features that we can sell to sustain the business. And so our strategy today, and that might evolve with time, is to have both very strong open source models, but also models that are much stronger actually at that point in time as closed source APIs. The one thing that we focus on also for our commercial models is to make deployment of these models very portable and very flexible. So we have customers to whom we ship the weights and allow them to modify the model, do client-side finetuning the same way they would do it with open source models. And so in that sense, we have some coherence across the commercial family and the open source family.
+
+ELAD GIL
+
+Cool. Ah, right behind the first question.
+
+ARTHUR MENSCH
+
+Developer productivity. So, coding basically.
+
+ELAD GIL
+
+And right there, please.
+
+
+ARTHUR MENSCH
+
+Yeah, we have plans. Not doing any announcement today, but we do have plans.
+
+ELAD GIL
+
+Yeah. The question, for the people who are being streamed, is whether or not there is a plan to do code-specific models.
+Right there.
+
+ARTHUR MENSCH
+
+We've been mostly into production at that point because the team was pretty lean, but we have ... we're now dedicating a couple of full time employees like finding new architectures, finding well, making research. And I think this is super important to remain relevant. So as we scale, we will be able to afford more exploration. It's also very linked to the compute capacity you have. So if you want to make some discoveries and make some progress, you need to have enough compute. And we're a bit compute-bound because of the shortage on H100, but this is going to improve favorably. So we expect to be doing more research and more exploratory research, I guess because we've been doing research from the start.
+
+ELAD GIL
+
+I guess related to that, it seems like, in general, your team has a very strong bias for action, and you move very quickly. How do you select for that in people that you hire? Are there specific things you look for? Interview questions you ask?
+
+ARTHUR MENSCH
+
+So we look for AI scientists that can do everything from going down the infrastructure stack to making extract, transform and load pipelines to thinking about mathematics. So we've been trying to find full stack AI engineers, and they tend to have a strong bias for action. Like, really the focus we had is to find low ego people willing to get their hands dirty with jobs that are considered boring by some AI scientists because it's a bit boring. But this has been actually quite productive. And because we focused on the right things.
+
+ELAD GIL
+
+Oh, in the back. 
+
+ARTHUR MENSCH
+
+I guess the team is now quite big, so there's a bunch of challenges associated to that. I was surprised by the amount of inbound that we had and the amount of representation that I had to do, especially as we got drawn into political stuff, which we would rather have avoided, but we kind of didn't have a choice. So this was definitely a surprise for me, generally speaking. I was also surprised by ... like the speed we managed to have, because it actually exceeded our expectations. But, yeah, I had pretty little idea of what the job of a founder would be when we started. It's quite fun, but it's effectively surprising. I was imagining myself as still coding after a year, and it's actually no longer the case, unfortunately. But, yeah, that's the price of trying to scale up pretty quickly.
+
+ELAD GIL
+
+You get to do HR coding now, which is even better.
+
+ARTHUR MENSCH
+
+Yeah.
+
+ELAD GIL
+
+Any other questions?
+Please.
+
+ARTHUR MENSCH
+
+So the reason why we started the company is to have a production arm that creates fission value, to our research arm. And to be honest, there is no ... there isn't much demonstration of existence of such organs, because you do have a few research labs that are tied to cloud companies that have a very big top line and using it to sustain research. We think that with AI and with the value that the technology brings, there is a way for doing it. But I guess this still remains to be shown. And that's the experiment we are making with Mistral.
+
+ELAD GIL
+
+Probably. One last question. I know Arthur has a hard stop. Maybe way in the back there.
+
+ARTHUR MENSCH
+
+Yes, I think you can squeeze it to that point. The question is whether you can have a 7B model that beats Mistral Large. This is ... It starts to be a bit tricky, but there might be way. I also expect the hardware to improve, like the local hardware to improve. And so, that will also give a little more space and a little more memory. And yeah, I see more potential there, because effectively you're a bit constrained by scaling loads. That tells you that at some point you do saturate the capacity of models of a certain size.
+
+ELAD GIL
+
+What is the main constraint? Or what do you think is the thing that it asymptotes against?
+
+ARTHUR MENSCH
+
+For scaling loads? Or?
+I mean, you can make 7B models very strong if you focus on a specific task. But if you want to pour all of the knowledge of the world onto 7GB, well, it's actually quite ambitious. So one thing is, for instance, multilingual models at this size are not a great idea. So you do need to focus on a specific part of the human knowledge you want to compress.
+
+ELAD GIL
+
+I guess one last question for me and then we can wrap up is, you know, a friend of mine pointed this out to me, which basically, if you think about what you do when you're training a model is you spin up a giant data center or supercomputer and then you run it for n weeks or months or however long you decide to train for, and then the output is a file.
+
+ARTHUR MENSCH
+
+Yeah, that's ... you're ... you're basically zipping the ... yeah, the world knowledge. It's not much more than that, actually.
+
+ELAD GIL
+
+Yeah. How do you think about either forms of continuous training or retraining over time or sort of longer training runs that get tacked on? I know some people are basically training longer or longer and then dropping a model and then they keep training and then they drop a model. And so I don't know how you think about where the world heads.
+
+ARTHUR MENSCH
+
+Yeah, this is an efficient way of training, so that's definitely interesting for us.
+
+ELAD GIL
+
+Okay, great. Well, please join me in thanking Arthur.
